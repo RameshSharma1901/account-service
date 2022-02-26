@@ -1,0 +1,5 @@
+providers:
+  - name: source1
+    url: xyz
+  - name: source2
+    url: abc
