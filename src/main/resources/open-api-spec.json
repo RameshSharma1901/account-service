@@ -1,0 +1,85 @@
+{
+  "openapi": "3.0.1" ,
+  "info": {
+    "title": "OpenAPI definition" ,
+    "version": "v0"
+  } ,
+  "servers": [
+    {
+      "url": "http://localhost:8080/" ,
+      "description": "Generated server url"
+    }
+  ] ,
+  "paths": {
+    "/api/validate-account": {
+      "post": {
+        "tags": [
+          "account-rest-controller"
+        ] ,
+        "operationId": "validateAccount" ,
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiRequest"
+              }
+            }
+          } ,
+          "required": true
+        } ,
+        "responses": {
+          "200": {
+            "description": "OK" ,
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  } ,
+  "components": {
+    "schemas": {
+      "ApiRequest": {
+        "type": "object" ,
+        "properties": {
+          "accountNumber": {
+            "type": "string"
+          } ,
+          "sources": {
+            "type": "array" ,
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      } ,
+      "ApiResponse": {
+        "type": "object" ,
+        "properties": {
+          "result": {
+            "type": "array" ,
+            "items": {
+              "$ref": "#/components/schemas/SourceResponse"
+            }
+          }
+        }
+      } ,
+      "SourceResponse": {
+        "type": "object" ,
+        "properties": {
+          "source": {
+            "type": "string"
+          } ,
+          "valid": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}

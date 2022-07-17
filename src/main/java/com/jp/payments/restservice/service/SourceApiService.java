@@ -13,12 +13,19 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * 
+ */
 @AllArgsConstructor
 @Service
 public class SourceApiService {
     SourceApiUtils sourceApiUtils;
     RestTemplate restTemplate;
 
+    /**
+     * @param apiRequest
+     * @return
+     */
     public ApiResponse getResultFromSourceApi(ApiRequest apiRequest){
         String accountNumber = apiRequest.getAccountNumber();
         List<String> sources = apiRequest.getSources();
